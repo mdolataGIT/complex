@@ -17,5 +17,5 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push maciej55/multi-client
   - docker push maciej55/multi-nginx
-  - docker push maciej55/multi-serve
+  - docker push maciej55/multi-server
   - docker push maciej55/multi-worker
