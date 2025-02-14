@@ -1,5 +1,7 @@
-language: generic
+dist: focal
 sudo: required
+language: generic
+
 services:
   - docker
 
@@ -19,3 +21,15 @@ after_success:
   - docker push maciej55/multi-nginx
   - docker push maciej55/multi-server
   - docker push maciej55/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-central-1"
+  app: "multi-docker"
+  env: "Multi-docker-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-209479289647"
+  bucket_path: "docker-multi"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
